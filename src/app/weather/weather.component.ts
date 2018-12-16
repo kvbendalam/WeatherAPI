@@ -11,18 +11,31 @@ import { map } from 'rxjs/operators';
 export class WeatherComponent implements OnInit {
 
   data:any = [];
+  result:any;
+  weather:any = [];
 
   constructor(private weatherapi:WeatherapiService) { }
 
   ngOnInit(){
     this.getData();
+
+   this.weather = [
+      {
+        "EmpID": 0,
+        "Name": "Krishnavamsi Bendalam",
+        "EmpCode": "AEYE0001",
+        "Salary": 800000
+      }
+    ]
+
   }
 
   ngAfterViewInit(){
     setInterval( ()=>{
     console.log('Called Weather API');
     this.getData();
-    }, 300000)
+    this.sendData(this.weather);
+    }, 100000)
   }
 
   getData(){
@@ -32,5 +45,12 @@ export class WeatherComponent implements OnInit {
         console.log(this.data);
       })
   } 
+
+  sendData(weather:any){
+    this.weatherapi.sendReport(weather).subscribe(data=>{
+      this.result = data;
+      console.log(this.result);
+    })
+  }
 
 }
