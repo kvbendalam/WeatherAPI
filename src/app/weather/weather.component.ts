@@ -1,7 +1,7 @@
 import { WeatherapiService } from './../weatherapi.service';
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
-
+import { Weather } from './../weather'
 
 @Component({
   selector: 'weather',
@@ -18,16 +18,16 @@ export class WeatherComponent implements OnInit {
 
   ngOnInit(){
     this.getData();
+    
 
    this.weather = [
       {
-        "EmpID": 0,
-        "Name": "Krishnavamsi Bendalam",
+        "EmpID": 1,
+        "Name": "KVB",
         "EmpCode": "AEYE0001",
-        "Salary": 800000
+        "Salary": 800000,
       }
     ]
-
   }
 
   ngAfterViewInit(){
@@ -35,7 +35,7 @@ export class WeatherComponent implements OnInit {
     console.log('Called Weather API');
     this.getData();
     this.sendData(this.weather);
-    }, 100000)
+    }, 30000)
   }
 
   getData(){
@@ -44,13 +44,14 @@ export class WeatherComponent implements OnInit {
         this.data = data;
         console.log(this.data);
       })
+      this.sendData(this.weather);
   } 
 
-  sendData(weather:any){
-    this.weatherapi.sendReport(weather).subscribe(data=>{
-      this.result = data;
-      console.log(this.result);
-    })
+  sendData(weather:Weather){
+    this.weatherapi.httpPostExample()
   }
+
+
+  
 
 }
