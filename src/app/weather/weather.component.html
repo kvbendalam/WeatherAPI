@@ -2,7 +2,7 @@
 <div class="row" style="text-align:center;">
     <div class="col-lg-12 col-md-12 col-sm-12">
   
-    <div class="col-lg-6 col-md-6 col-sm-6 col-centered">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-centered">
         <div  style="background-color:#eeeeee;">
             <p>{{data.name}}({{data.sys?.country}})</p>
             <p>Longitude : {{data.coord?.lon}}</p>
@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <div class="col-lg-6 col-md-6 col-sm-6 col-centered">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-centered">
         <div  style="background-color:#eeeeee;">
             <p>Temparature : {{data.main?.temp}}</p>
             <p>Pressure : {{data.main?.pressure}}</p>
@@ -20,25 +20,41 @@
         </div>
     </div>
 
-    <div class="col-lg-6 col-md-6 col-sm-6 col-centered">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-centered">
         <div  style="background-color:#eeeeee;">
             <p>Wind Speed : {{data.wind?.speed}}</p>
         </div>
     </div>
 
 
-    <div class="col-lg-6 col-md-6 col-sm-6 col-centered">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-centered">
         <div  style="background-color:#eeeeee;">
             <p>Clouds : {{data.clouds?.all}}</p>
         </div>
     </div>
 
-    <div class="col-lg-6 col-md-6 col-sm-6 col-centered">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-centered">
         <div  style="background-color:#eeeeee;">
             <p> SunRise: {{data.sys?.sunrise}}</p>
             <p> SunSet : {{data.sys?.sunset}}</p>
         </div>
     </div>
   
+    
+
+
+    <table id="customers">
+            <th>ID</th>
+        <th>Place</th>
+        <th>Pressure</th>
+        <th>Temparature</th>
+        <tr *ngFor = "let data of nodeData">
+            <td>{{data.EmpID}}</td>
+            <td>{{data.Name}}</td>
+            <td>{{data.EmpCode}}</td>
+            <td>{{data.Salary}}</td>
+        </tr>
+          </table>
+
 </div>
 </div>

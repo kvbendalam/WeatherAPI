@@ -24,23 +24,17 @@ export class WeatherapiService {
         });
   }
 
-  // sendReport(weather:Weather): Observable<any> {        
-  //   return this.http.post(this.POST_URL, {weather}).pipe(map(
-  //     data => {
-  //       console.log(data)
-  //       return data
-  //     }
-  //   ));
-  // }    
+  getWeatherfromDB(){
+      const weatherDB = this.POST_URL;
+        return this.http.get<any>(weatherDB,
+            {
+                headers:new HttpHeaders().set('Accept','application/json')
+            });
+  }
 
-  httpPostExample() {
-    this.http.post("http://localhost:3000/employees",
-        {
-            "EmpID": 0,
-            "Name": "Hyderabad",
-            "EmpCode": "1019",
-            "Salary": 29,
-        })
+  httpPostExample(weather) {
+      console.log(weather);
+    this.http.post("http://localhost:3000/employees",weather)
         .subscribe(
             (val) => {
                 console.log("POST call successful value returned in body", val);
